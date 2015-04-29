@@ -13,8 +13,21 @@ var Blog = Marionette.CompositeView.extend({
   childView: Comment,
   childViewContainer: 'ol',
 
+  ui: {
+    back: '.back'
+  },
+
+  triggers: {
+    'click @ui.back': 'back'
+  },
+
   initialize: function() {
     this.collection = new Backbone.Collection(this.model.get('comments'));
+  },
+
+  onBack: function() {
+    Backbone.history.navigate('');
+    this.options.controller.entryList();
   }
 });
 

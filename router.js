@@ -25,7 +25,10 @@ var Controller = Marionette.Object.extend({
 
   blogEntry: function(id) {
     var model = this.collection.get(id);
-    var blog = new BlogView({model: model});
+    var blog = new BlogView({
+      controller: this,
+      model: model
+    });
     this.regionManager.get('layout').show(blog);
   }
 });
