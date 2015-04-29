@@ -8,7 +8,7 @@ var BlogView = require('./blog');
 var Controller = Marionette.Object.extend({
   initialize: function() {
     this.collection = new Backbone.Collection(this.options.data);
-    this.regions = new RegionManager({
+    this.regionManager = new Marionette.RegionManager({
       regions: {
         layout: '#layout'
       }
@@ -16,11 +16,17 @@ var Controller = Marionette.Object.extend({
   },
 
   entryList: function() {
-
+    var blogList = new BlogListView({
+      collection: this.collection,
+      controller: this
+    });
+    this.regionManager.get('layout').show(blogList);
   },
 
   blogEntry: function(id) {
-
+    var model = this.collection.get(id);
+    var blog = new BlogView({model: model});
+    this.regionManager.get('layout').show(blog);
   }
 });
 

@@ -1,8 +1,9 @@
+window._ = require('underscore'); // Backbone can't see it otherwise
+
 var Backbone = require('backbone');
 Backbone.$ = window.$; // Use the jQuery from the script tag
-console.log(window.$);
-Backbone.Marionette = Marionette;
 var Marionette = require('backbone.marionette');
+Backbone.Marionette = Marionette;
 
 
 var Router = require('./router');
@@ -44,6 +45,7 @@ var blogData = [
 var Application = Marionette.Application.extend({
   onStart: function(options) {
     var router = new Router({data: options.data});
+    Backbone.history.start();
   }
 });
 
