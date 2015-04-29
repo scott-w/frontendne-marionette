@@ -1,0 +1,48 @@
+{
+  "name": "frontendne-marionette",
+  "version": "1.0.0",
+  "description": "Tutorial for demonstrating the basics of Marionette",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:scott-w/frontendne-marionette.git"
+  },
+  "keywords": [
+    "tutorial"
+  ],
+  "author": "Scott Walton",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/scott-w/frontendne-marionette/issues"
+  },
+  "homepage": "https://github.com/scott-w/frontendne-marionette",
+  "dependencies": {
+    "backbone": "^1.1.2",
+    "backbone.marionette": "^2.4.1",
+    "node-underscorify": "0.0.14",
+    "underscore": "^1.8.3"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "node-underscorify",
+        {
+          "extensions": [
+            "jst",
+            "ejs",
+            "html"
+          ],
+          "requires": [
+            {
+              "variable": "_",
+              "module": "underscore"
+            }
+          ]
+        }
+      ]
+    ]
+  }
+}
