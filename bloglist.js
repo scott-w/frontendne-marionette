@@ -6,6 +6,10 @@ var BlogItem = Marionette.LayoutView.extend({
   tagName: 'li',
   template: require('./blogitem.html'),
 
+  attributes: {
+    style: 'cursor:pointer;'
+  },
+
   triggers: {
     click: 'view:blog'
   }
